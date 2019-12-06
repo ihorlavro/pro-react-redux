@@ -1,0 +1,9 @@
+.todo {
+  &__search {
+    display: flex;
+
+    .search-panel {
+      flex-grow: 1;
+    }
+  }
+}

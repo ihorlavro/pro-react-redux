@@ -1,0 +1,13 @@
+.add-item-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .uk-input {
+    flex-grow: 1;
+  }
+
+  .uk-button {
+    flex-shrink: 0;
+  }
+}
