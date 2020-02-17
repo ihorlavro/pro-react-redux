@@ -1,0 +1,16 @@
+.shopping-cart-table {
+  .total {
+    margin: 0 10px 0 0;
+    text-align: right;
+    font-size: 1.3rem;
+  }
+
+  .buttons-group {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn {
+    margin: 5px 0 0 5px;
+  }
+}

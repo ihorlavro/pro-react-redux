@@ -1,0 +1,24 @@
+.shop-header {
+  max-width: 100%;
+  margin-bottom: 1rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    font-size: 1.3rem;
+
+    .cart-icon {
+      margin-right: 10px;
+    }
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+}
