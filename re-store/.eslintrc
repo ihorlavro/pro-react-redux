@@ -23,6 +23,7 @@
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
     "class-methods-use-this": ["off"],
-    "react/jsx-one-expression-per-line": ["off"]
+    "react/jsx-one-expression-per-line": ["off"],
+    "no-shadow": ["off"]
   }
 }

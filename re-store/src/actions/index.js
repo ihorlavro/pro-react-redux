@@ -5,5 +5,17 @@ function booksLoaded(newBooks) {
   };
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { booksLoaded };
+function booksRequested() {
+  return {
+    type: 'BOOKS_REQUESTED',
+  };
+}
+
+function booksError(error) {
+  return {
+    type: 'BOOKS_ERROR',
+    payload: error,
+  };
+}
+
+export { booksLoaded, booksRequested, booksError };

@@ -11,9 +11,7 @@ function BookListItem({ book }) {
         <img src={cover} alt="" />
       </div>
       <div className="book-details">
-        <a href="#" className="book-title">
-          {title}
-        </a>
+        <span className="book-title">{title}</span>
         <div className="book-author">{author}</div>
         <div className="book-price">{`$${price}`}</div>
         <button type="button" className="btn btn-primary">
