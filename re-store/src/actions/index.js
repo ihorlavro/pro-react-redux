@@ -1,21 +1,42 @@
-function booksLoaded(newBooks) {
-  return {
-    type: 'BOOKS_LOADED',
-    payload: newBooks,
-  };
-}
+import { func } from 'prop-types';
 
 function booksRequested() {
   return {
-    type: 'BOOKS_REQUESTED',
+    type: 'FETCH_BOOKS_REQUEST',
+  };
+}
+
+function booksLoaded(newBooks) {
+  return {
+    type: 'FETCH_BOOKS_SUCCESS',
+    payload: newBooks,
   };
 }
 
 function booksError(error) {
   return {
-    type: 'BOOKS_ERROR',
+    type: 'FETCH_BOOKS_FAILURE',
     payload: error,
   };
 }
 
-export { booksLoaded, booksRequested, booksError };
+function fetchBooks(bookstoreService, dispatch) {
+  return () => {
+    dispatch(booksRequested());
+    bookstoreService
+      .getBooks()
+      .then(data => {
+        dispatch(booksLoaded(data));
+      })
+      .catch(error => dispatch(booksError(error)));
+  };
+}
+
+function bookAddedToCard(bookId) {
+  return {
+    type: 'BOOK_ADDED_TO_CART',
+    payload: bookId,
+  };
+}
+
+export { fetchBooks, bookAddedToCard };
