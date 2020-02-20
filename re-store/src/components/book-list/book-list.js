@@ -4,7 +4,7 @@ import { withBookstoreService } from '../hoc';
 import BookListItem from '../book-list-item';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
-import { fetchBooks, bookAddedToCard } from '../../actions';
+import { fetchBooks, bookAddedToCart } from '../../actions';
 import { compose } from '../../utils';
 
 import './book-list.scss';
@@ -44,7 +44,7 @@ class BookListContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ books, loading, error }) => {
+const mapStateToProps = ({ bookList: { books, loading, error } }) => {
   return {
     books,
     loading,
@@ -55,7 +55,7 @@ const mapStateToProps = ({ books, loading, error }) => {
 const mapDispatchToProps = (dispatch, { bookstoreService }) => {
   return {
     fetchBooks: fetchBooks(bookstoreService, dispatch),
-    onAddedToCart: id => dispatch(bookAddedToCard(id)),
+    onAddedToCart: id => dispatch(bookAddedToCart(id)),
   };
 };
 

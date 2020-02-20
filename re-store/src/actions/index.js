@@ -1,5 +1,3 @@
-import { func } from 'prop-types';
-
 function booksRequested() {
   return {
     type: 'FETCH_BOOKS_REQUEST',
@@ -32,11 +30,25 @@ function fetchBooks(bookstoreService, dispatch) {
   };
 }
 
-function bookAddedToCard(bookId) {
+function bookAddedToCart(bookId) {
   return {
     type: 'BOOK_ADDED_TO_CART',
     payload: bookId,
   };
 }
 
-export { fetchBooks, bookAddedToCard };
+function bookRemovedFromCart(bookID) {
+  return {
+    type: 'BOOK_REMOVED_FROM_CART',
+    payload: bookID,
+  };
+}
+
+function allBooksRemovedFromCart(bookID) {
+  return {
+    type: 'ALL_BOOKS_REMOVED_FROM_CART',
+    payload: bookID,
+  };
+}
+
+export { fetchBooks, bookAddedToCart, bookRemovedFromCart, allBooksRemovedFromCart };

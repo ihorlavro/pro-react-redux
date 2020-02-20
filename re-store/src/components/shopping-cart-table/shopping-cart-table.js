@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bookAddedToCart, bookRemovedFromCart, allBooksRemovedFromCart } from '../../actions';
 import './shopping-cart-table.scss';
 
 function ShoppingCartTable({ items, total, onIncrease, onDecrease, onDelete }) {
@@ -39,6 +40,10 @@ function ShoppingCartTable({ items, total, onIncrease, onDecrease, onDelete }) {
     );
   };
 
+  if (!items.length) {
+    return <h4 className="text-center mb-5 mt-5">Cart is empty</h4>;
+  }
+
   return (
     <div className="shopping-cart-table">
       <h2>Your order</h2>
@@ -59,25 +64,17 @@ function ShoppingCartTable({ items, total, onIncrease, onDecrease, onDelete }) {
   );
 }
 
-const mapStateToProps = ({ cartItems, orderTotal }) => {
+const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal } }) => {
   return {
     items: cartItems,
     total: orderTotal,
   };
 };
 
-const mapDispatchToProps = () => {
-  return {
-    onIncrease: id => {
-      console.log(`Increase ${id}`);
-    },
-    onDecrease: id => {
-      console.log(`Decrease ${id}`);
-    },
-    onDelete: id => {
-      console.log(`Delete ${id}`);
-    },
-  };
+const mapDispatchToProps = {
+  onIncrease: bookAddedToCart,
+  onDecrease: bookRemovedFromCart,
+  onDelete: allBooksRemovedFromCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartTable);
