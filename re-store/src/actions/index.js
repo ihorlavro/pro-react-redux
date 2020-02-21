@@ -18,17 +18,15 @@ function booksError(error) {
   };
 }
 
-function fetchBooks(bookstoreService, dispatch) {
-  return () => {
-    dispatch(booksRequested());
-    bookstoreService
-      .getBooks()
-      .then(data => {
-        dispatch(booksLoaded(data));
-      })
-      .catch(error => dispatch(booksError(error)));
-  };
-}
+const fetchBooks = bookstoreService => () => dispatch => {
+  dispatch(booksRequested());
+  bookstoreService
+    .getBooks()
+    .then(data => {
+      dispatch(booksLoaded(data));
+    })
+    .catch(error => dispatch(booksError(error)));
+};
 
 function bookAddedToCart(bookId) {
   return {
